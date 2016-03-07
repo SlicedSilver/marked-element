@@ -118,7 +118,15 @@ as you would a regular DOM element:
         observer: 'render',
         type: Boolean,
         value: false
-      }
+      },
+      /**
+       * Render using a single line. Paragraph tags are removed.
+       */
+      singleline: {
+        observer: 'render',
+        type: Boolean,
+        value: false,
+      },
     },
 
     ready: function() {
@@ -200,7 +208,13 @@ as you would a regular DOM element:
         pedantic: this.pedantic,
         smartypants: this.smartypants
       };
-      Polymer.dom(this._outputElement).innerHTML = marked(this.markdown, opts);
+
+      var markedtext = marked(this.markdown, opts);
+      if (this.singleline) {
+        markedtext = markedtext.replace(/<p>/gi,'').replace(/<\/p>/gi,'');
+      }
+
+      Polymer.dom(this._outputElement).innerHTML = markedtext;
       this.fire('marked-render-complete');
     },
 

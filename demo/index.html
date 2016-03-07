@@ -46,6 +46,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       padding-left: 24px;
     }
 
+    .singleline {
+      background-color: #cdeecd;
+      border-radius: 3px;
+    }
+
   </style>
 </head>
 
@@ -81,6 +86,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <marked-element markdown="***Bold and italic***">
         <div class="markdown-html custom"></div>
       </marked-element>
+    </section>
+
+    <section>
+      <h3>Single line rendering</h3>
+      <div class="singleline">
+        <marked-element markdown="This is **bold** and this is *italic*." singleline>
+        </marked-element>
+      </div>
     </section>
 
   </div>
